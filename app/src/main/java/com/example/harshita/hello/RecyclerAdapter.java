@@ -1,6 +1,7 @@
 package com.example.harshita.hello;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
@@ -52,10 +53,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         holder.venueView.setText(recycler.getVenue());
         holder.nameView.setText(recycler.getName());
         holder.imageView.setImageBitmap(recycler.getBitmap());
-        holder.buttonView.setOnClickListener(null);
+        holder.buttonView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDatabase();
+            }
+        });
 
 
     }
+
+    public void openDatabase(){
+        Intent intent = new Intent(mCtx , MapsActivity.class);
+        mCtx.startActivity(intent);
+    }
+
 
     @Override
     public int getItemCount() {
